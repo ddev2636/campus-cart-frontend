@@ -138,7 +138,7 @@ const Buy = () => {
                   >
                     <div className="img-div">
                       <img
-                        src={`/uploads/${items.image}`}
+                        src={`${items.picture}`}
                         alt="hello"
                         className="buy-img"
                       />
@@ -167,7 +167,7 @@ const Buy = () => {
                         <div className="modal-container">
                           <div className="modal-item1">
                             <img
-                              src={`/uploads/${modalData.image}`}
+                              src={`${modalData.picture}`}
                               alt=""
                               className="modal-img"
                             />
@@ -271,7 +271,7 @@ const Buy = () => {
                     >
                       <div className="img-div">
                         <img
-                          src={`/uploads/${items.image}`}
+                          src={`${items.picture}`}
                           alt="hello"
                           className="buy-img"
                         />
@@ -303,7 +303,7 @@ const Buy = () => {
                           <div className="modal-container">
                             <div className="modal-item1">
                               <img
-                                src={`/uploads/${modalData.image}`}
+                                src={`${modalData.picture}`}
                                 alt=""
                                 className="modal-img"
                               />

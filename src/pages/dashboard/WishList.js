@@ -25,7 +25,7 @@ const WishList = () => {
                 >
                   <div className="img-div">
                     <img
-                      src={`/uploads/${items.image}`}
+                      src={`${items.picture}`}
                       alt="hello"
                       className="buy-img"
                     />

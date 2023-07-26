@@ -30,9 +30,9 @@ const Cart = () => {
                     // key={items._id}
                     // onClick={() => handleClick(items)}
                   >
-                    <div className="img-div">
+                    <div className="-div">
                       <img
-                        src={`/uploads/${items.image}`}
+                        src={`${items.picture}`}
                         alt="hello"
                         className="buy-img"
                       />
