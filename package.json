@@ -48,6 +48,6 @@
   },
   "devDependencies": {
     "react-router-dom": "^6.7.0"
-  },
-  "proxy": "https://campus-cart-5.onrender.com"
+  }
+  
 }
