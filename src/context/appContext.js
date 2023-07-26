@@ -52,7 +52,10 @@ const AppProvider = ({ children }) => {
 
   const registerUser = async (currentUser) => {
     try {
-      const response = await axios.post("/api/v1/auth/register", currentUser);
+      const response = await axios.post(
+        "https://campus-cart-5.onrender.com/api/v1/auth/register",
+        currentUser
+      );
       const { user } = response.data;
       dispatch({
         type: REGISTER_USER_SUCCESS,
@@ -69,7 +72,10 @@ const AppProvider = ({ children }) => {
 
   const loginUser = async (currentUser) => {
     try {
-      const response = await axios.post("/api/v1/auth/login", currentUser);
+      const response = await axios.post(
+        "https://campus-cart-5.onrender.com/api/v1/auth/login",
+        currentUser
+      );
       const { user } = response.data;
       dispatch({
         type: LOGIN_USER_SUCCESS,
@@ -107,7 +113,9 @@ const AppProvider = ({ children }) => {
 
   const buyItem = async () => {
     try {
-      const { data } = await axios.get("/api/v1/item");
+      const { data } = await axios.get(
+        "https://campus-cart-5.onrender.com/api/v1/item"
+      );
       setItem(data);
       // console.log(item);
     } catch (error) {
@@ -141,15 +149,18 @@ const AppProvider = ({ children }) => {
   console.log(arr);
 
   const func = () => {
-    fetch("/api/v1/stripe/create-checkout-session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        items: arr,
-      }),
-    })
+    fetch(
+      "https://campus-cart-5.onrender.com/api/v1/stripe/create-checkout-session",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          items: arr,
+        }),
+      }
+    )
       .then(async (res) => {
         if (res.ok) return await res.json();
         return res.json().then((json) => Promise.reject(json));
