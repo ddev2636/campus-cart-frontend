@@ -1,0 +1,311 @@
+.box-container {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 1rem;
+  background-color: white;
+  transition: .3s ease-in-out;
+}
+
+.box-container:hover{
+  transform: scale(1.03);
+
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+.buy-img {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 3 / 2;
+}
+
+.last-div {
+  display: none;
+}
+
+.desc-div {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem;
+  align-items: center;
+}
+
+.item-name {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.2rem;
+  color: black;
+}
+
+.item-price {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgb(31, 141, 31);
+  margin-top: -2rem;
+  margin-left: 1rem;
+  margin-bottom: 0.2rem;
+}
+.box-container:hover {
+  cursor: pointer;
+}
+
+.item-btn {
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  background-color: white;
+}
+
+@media screen and (max-width: 900px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+}
+
+.model {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  opacity: 0;
+  transition: 0.3s ease-in-out all;
+}
+
+.show-model {
+  display: block;
+  z-index: 99;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.content1 {
+  background: white;
+  width: 90vw;
+  height: 95vh;
+  border-radius: 0.25rem;
+  padding: 4rem 2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background-color: white;
+}
+
+.internal {
+  font-size: 2rem;
+  color: red;
+  cursor: pointer;
+}
+
+.modal-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.modal-img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+}
+
+.modal-item2 {
+  margin-left: 4rem;
+  background-color: white;
+}
+
+.item-price2 {
+  font-size: 1.2rem;
+  color: green;
+}
+
+.item-desc {
+  font-size: 1.2rem;
+  color: rgb(76, 75, 75);
+}
+
+.item-contact {
+  font-size: 1.2rem;
+  color: rgb(70, 69, 69);
+}
+
+.chat-btn {
+  border: none;
+  background-color: white;
+  font-size: 1.8rem;
+  color: green;
+  cursor: pointer;
+}
+
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-btn {
+  border: none;
+  color: #4e54c8;
+  font-size: 1.7rem;
+  cursor: pointer;
+  background-color: white;
+}
+
+.add-cart {
+  background-color: #5c62cd;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  color: white;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.cart-btn2 {
+  border: none;
+  color: red;
+  font-size: 1.7rem;
+  cursor: pointer;
+  background-color: white;
+}
+
+.model1 {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  opacity: 0;
+  transition: 0.3s ease-in-out all;
+}
+
+.show-model1 {
+  display: block;
+  z-index: 99;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.content11 {
+  background: white;
+  width: 90vw;
+  height: 95vh;
+  border-radius: 0.25rem;
+  padding: 4rem 2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.add-wish {
+  background-color: #5c62cd;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  color: white;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.btner {
+  margin-left: 2rem;
+}
+
+.add-cart:focus {
+  color: red;
+  background-color: white;
+}
+
+.add-wish:focus {
+  color: red;
+  background-color: white;
+}
+
+.heart {
+  margin-bottom: -0.2rem;
+}
+
+.chat-btn2 {
+  margin-bottom: -0.4rem;
+  margin-left: 0.5rem;
+}
+
+.alert-alert {
+  background-color: #19a061;
+  color: white;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 0.4rem;
+}
+
+.buy-main {
+  margin-top: -2rem;
+}
+
+
+.checkout-btn{
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9;
+  font-size: 1.3rem;
+  padding: .5rem;
+  border: 2px solid #4e54c8;
+  border-radius:.4rem;
+  background-color: white;
+  color: #4e54c8;
+}
+
+.checkout-btn:focus{
+  color: white;
+  border: none;
+  background-color: #4e54c8;
+}
+
+.checkout-btn:hover{
+   transform: scale(1.05);
+   cursor: pointer;
+}
+
+.empty-cart{
+  width: 25rem;
+}
+
+.align-cart{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 1rem;
+}

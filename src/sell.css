@@ -1,0 +1,15 @@
+.sell-container{
+    width: 25rem;
+    margin: auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: white;
+    border-radius: .5rem;
+    margin-top: -3.5rem;
+}
+
+.upload-heading{
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: auto;
+    color: #4e43c8;
+}
