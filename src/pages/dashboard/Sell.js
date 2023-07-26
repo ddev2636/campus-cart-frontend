@@ -122,10 +122,13 @@ const Sell = () => {
     // console.log(formData);
 
     //console.log(values);
-    const savedUserResponse = await fetch("/api/v1/item/sell", {
-      method: "POST",
-      body: formData,
-    });
+    const savedUserResponse = await fetch(
+      "https://campus-cart-5.onrender.com/api/v1/item/sell",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
     const savedUser = await savedUserResponse.json();
     // console.log(savedUser);
     onSubmitProps.resetForm();
