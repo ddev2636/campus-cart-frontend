@@ -82,7 +82,7 @@
 
 // export default Sell;
 
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import Dropzone from "react-dropzone";
@@ -92,10 +92,13 @@ import MenuItem from "@mui/material/MenuItem";
 import { Formik } from "formik";
 import * as yup from "yup";
 import "../../sell.css";
+import { v4 as uuid } from "uuid";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage } from "../../firebase";
 
 const Sell = () => {
   const ThingSchema = yup.object().shape({
-    image: yup.string().required("required"),
+    picture: yup.string().required("required"),
     name: yup.string().required("required"),
     price: yup.string().required("required"),
     desc: yup.string().required("required"),
@@ -104,35 +107,48 @@ const Sell = () => {
   });
 
   let initialValuesRegister = {
-    image: "",
+    picture: "",
     name: "",
     price: "",
     desc: "",
     category: "",
     contact: "",
   };
+  const [progress, setProgress] = useState(0);
+  const [open, setOpen] = useState(false);
 
   const sellItem = async (values, onSubmitProps) => {
-    const formData = new FormData();
-    //console.log(formData);
-    formData.append("image", values.image.name);
-    for (let value in values) {
-      formData.append(value, values[value]);
-    }
-    // console.log(formData);
-
     //console.log(values);
-    const savedUserResponse = await fetch(
-      "https://campus-cart-5.onrender.com/api/v1/item/sell",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    const savedUserResponse = await fetch("https://campus-cart-5.onrender.com/api/v1/item/sell", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    });
     const savedUser = await savedUserResponse.json();
     // console.log(savedUser);
     onSubmitProps.resetForm();
   };
+  // const sellItem = async (values, onSubmitProps) => {
+  //   const formData = new FormData();
+  //   //console.log(formData);
+  //   formData.append("image", values.image.name);
+  //   for (let value in values) {
+  //     formData.append(value, values[value]);
+  //   }
+  //   // console.log(formData);
+
+  //   //console.log(values);
+  //   const savedUserResponse = await fetch(
+  //     "/api/v1/item/sell",
+  //     {
+  //       method: "POST",
+  //       body: formData,
+  //     }
+  //   );
+  //   const savedUser = await savedUserResponse.json();
+  //   // console.log(savedUser);
+  //   onSubmitProps.resetForm();
+  // };
 
   const handleFormSubmit = async (values, onSubmitProps) => {
     await sellItem(values, onSubmitProps);
@@ -165,7 +181,7 @@ const Sell = () => {
             >
               {" "}
               <div className="upload-heading">Upload to Sell</div>
-              <Dropzone
+              {/* <Dropzone
                 acceptedFiles=".jpg,.jpeg,.png"
                 multiple={false}
                 onDrop={(acceptedFiles) =>
@@ -194,6 +210,74 @@ const Sell = () => {
                         <Typography>{values.image.name}</Typography>
                         <EditOutlinedIcon />
                       </Box>
+                    )}
+                  </Box>
+                )}
+              </Dropzone> */}
+              <Dropzone
+                acceptedFiles=".jpg,.jpeg,.png"
+                multiple={false}
+                onDrop={async (acceptedFiles) => {
+                  try {
+                    if (acceptedFiles.length === 0) {
+                      console.log("No files selected.");
+                      return;
+                    }
+
+                    const storageRef = ref(storage, "Users/" + uuid());
+
+                    const uploadTask = uploadBytesResumable(
+                      storageRef,
+                      acceptedFiles[0]
+                    );
+
+                    uploadTask.on(
+                      "state_changed",
+                      (snapshot) => {
+                        setOpen(true);
+                        const progress = Math.round(
+                          (snapshot.bytesTransferred / snapshot.totalBytes) *
+                            100
+                        );
+                        setProgress(progress);
+                      },
+                      (error) => {
+                        console.log("Error uploading file:", error);
+                      },
+                      async () => {
+                        await getDownloadURL(uploadTask.snapshot.ref).then(
+                          (downloadURL) => {
+                            console.log(downloadURL);
+                            setFieldValue("picture", downloadURL);
+                            setOpen(false);
+                          }
+                        );
+                      }
+                    );
+                  } catch (error) {
+                    console.log("Error uploading file:", error);
+                  }
+                }}
+              >
+                {({ getRootProps, getInputProps }) => (
+                  <Box
+                    {...getRootProps()}
+                    border={`2px dashed red`}
+                    p="1rem"
+                    sx={{ "&:hover": { cursor: "pointer" } }}
+                  >
+                    <input {...getInputProps()} />
+                    {!values.picture ? (
+                      <p>Add Picture Here</p>
+                    ) : (
+                      // <FlexBetween>
+                      <>
+                        <Typography sx={{ color: "green" }}>
+                          Image Uploaded
+                        </Typography>
+                        <EditOutlinedIcon />
+                      </>
+                      // </FlexBetween>
                     )}
                   </Box>
                 )}
